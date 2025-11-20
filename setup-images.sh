@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# 이 스크립트는 이미지 파일을 올바른 위치에 복사하는 방법을 안내합니다.
+
+echo "=== MindSyn 웹사이트 이미지 설정 가이드 ==="
+echo ""
+echo "다음 이미지 파일들을 준비해주세요:"
+echo ""
+echo "1. 가로형 로고 (네비게이션용) → images/logo.png"
+echo "2. 칩/회로 이미지 (Hero 섹션용) → images/chip.png"
+echo "3. 세로형 로고 (About 섹션용) → images/logo-vertical.png"
+echo ""
+echo "문서 파일:"
+echo "4. 논문 PDF → documents/paper.pdf"
+echo "5. 포스터 PDF → documents/poster.pdf"
+echo ""
+echo "=== 이미지 복사 예제 명령어 ==="
+echo ""
+echo "# 로컬에서 파일을 복사하는 경우:"
+echo "cp ~/Documents/logo1.png images/logo.png"
+echo "cp ~/Documents/logo2.png images/chip.png"
+echo "cp ~/Documents/logo3.png images/logo-vertical.png"
+echo "cp ~/Documents/Hawon_Park.pdf documents/paper.pdf"
+echo "cp ~/Downloads/poster.pdf documents/poster.pdf"
+echo ""
