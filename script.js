@@ -2,24 +2,24 @@
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-mobileMenuToggle.addEventListener('click', function() {
+mobileMenuToggle.addEventListener('click', function () {
     this.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
 // Close mobile menu when clicking a link
 document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function () {
         mobileMenuToggle.classList.remove('active');
         navMenu.classList.remove('active');
     });
 });
 
 // Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const isClickInsideNav = navMenu.contains(event.target);
     const isClickOnToggle = mobileMenuToggle.contains(event.target);
-    
+
     if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
         mobileMenuToggle.classList.remove('active');
         navMenu.classList.remove('active');
