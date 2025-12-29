@@ -101,6 +101,40 @@ body {
     color: var(--primary-color);
 }
 
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.lang-icon {
+    font-size: 1.2rem;
+}
+
+#currentLang {
+    font-size: 0.85rem;
+}
+
 /* Hero Section */
 .hero {
     margin-top: 80px;
@@ -582,6 +616,60 @@ body {
 }
 
 .tech-card p {
+    line-height: 1.8;
+    color: #666;
+}
+
+/* Demo Section */
+.demo {
+    background: var(--light-bg);
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.demo-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.demo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.demo-video {
+    position: relative;
+    width: 100%;
+    background: #000;
+}
+
+.demo-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.demo-info {
+    padding: 2rem;
+}
+
+.demo-info h3 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.demo-info p {
+    font-size: 1.05rem;
     line-height: 1.8;
     color: #666;
 }
@@ -1109,6 +1197,29 @@ body {
         display: block;
         padding: 1.2rem 2rem;
         font-size: 1.1rem;
+    }
+
+    .lang-switcher {
+        width: 100%;
+        padding: 0 2rem;
+        margin-top: 1rem;
+    }
+
+    .lang-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .demo-grid {
+        gap: 2rem;
+    }
+
+    .demo-info {
+        padding: 1.5rem;
+    }
+
+    .demo-info h3 {
+        font-size: 1.5rem;
     }
 
     .hero .container {

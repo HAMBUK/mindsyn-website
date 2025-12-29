@@ -115,3 +115,90 @@ function toggleBib(bibId) {
         }
     }
 }
+
+// Language Toggle
+let currentLang = 'ko'; // Default language
+
+const translations = {
+    ko: '한국어',
+    en: 'English'
+};
+
+function switchLanguage() {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+
+    // Update language button text
+    document.getElementById('currentLang').textContent = translations[currentLang];
+
+    // Update all elements with data-lang attributes
+    document.querySelectorAll('[data-ko]').forEach(element => {
+        const koText = element.getAttribute('data-ko');
+        const enText = element.getAttribute('data-en');
+
+        // Check if content has HTML tags (like <br>)
+        if (koText.includes('<br>') || enText.includes('<br>') || koText.includes('<') || enText.includes('<')) {
+            if (currentLang === 'ko') {
+                element.innerHTML = koText;
+            } else {
+                element.innerHTML = enText;
+            }
+        } else {
+            if (currentLang === 'ko') {
+                element.textContent = koText;
+            } else {
+                element.textContent = enText;
+            }
+        }
+    });
+
+    // Update form placeholders
+    const form = document.querySelector('.contact-form form');
+    if (form) {
+        const inputs = form.querySelectorAll('input, textarea');
+        const placeholders = {
+            ko: {
+                name: '이름',
+                email: '이메일',
+                company: '회사명',
+                message: '메시지'
+            },
+            en: {
+                name: 'Name',
+                email: 'Email',
+                company: 'Company',
+                message: 'Message'
+            }
+        };
+
+        inputs[0].placeholder = placeholders[currentLang].name;
+        inputs[1].placeholder = placeholders[currentLang].email;
+        inputs[2].placeholder = placeholders[currentLang].company;
+        inputs[3].placeholder = placeholders[currentLang].message;
+    }
+
+    // Update form button text
+    const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.textContent = currentLang === 'ko' ? '보내기' : 'Send';
+    }
+
+    // Update form success message
+    if (form) {
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            const message = currentLang === 'ko'
+                ? '감사합니다! 메시지가 전송되었습니다.'
+                : 'Thank you! Your message has been sent.';
+            alert(message);
+            this.reset();
+        };
+    }
+}
+
+// Add event listener to language button
+document.addEventListener('DOMContentLoaded', function () {
+    const langBtn = document.getElementById('langBtn');
+    if (langBtn) {
+        langBtn.addEventListener('click', switchLanguage);
+    }
+});
