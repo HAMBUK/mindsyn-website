@@ -50,27 +50,16 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Form submission handler
-document.querySelector('.contact-form form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Get form data
-    const formData = {
-        name: this.querySelector('input[type="text"]').value,
-        email: this.querySelector('input[type="email"]').value,
-        company: this.querySelectorAll('input[type="text"]')[1].value,
-        message: this.querySelector('textarea').value
-    };
-
-    // Here you would typically send the data to a server
-    console.log('Form submitted:', formData);
-
-    // Show success message
-    alert('감사합니다! 메시지가 전송되었습니다.');
-
-    // Reset form
-    this.reset();
-});
+// Form submission handler - Formspree will handle the actual submission
+// Just keep the language-specific success message handling
+const contactForm = document.querySelector('.contact-form form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Let Formspree handle the submission
+        // The form will redirect to Formspree's thank you page
+        // Or you can add a custom redirect URL in the form
+    });
+}
 
 // Intersection Observer for fade-in animations
 const observerOptions = {
