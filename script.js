@@ -50,20 +50,6 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Form submission handler - Temporarily disabled until email setup
-const contactForm = document.querySelector('#contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        
-        const message = currentLang === 'ko' 
-            ? '죄송합니다. 이메일 전송 기능은 현재 설정 중입니다.\n직접 yoonseok.yang@sunykorea.ac.kr로 연락 부탁드립니다.' 
-            : 'Sorry, email functionality is currently being set up.\nPlease contact directly at yoonseok.yang@sunykorea.ac.kr';
-        
-        alert(message);
-    });
-}
-
 // Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
