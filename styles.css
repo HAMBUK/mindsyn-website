@@ -88,6 +88,12 @@ body {
     gap: 2rem;
     margin: 0;
     padding: 0;
+    align-items: center;
+}
+
+.nav-menu li {
+    display: flex;
+    align-items: center;
 }
 
 .nav-menu a {
@@ -95,6 +101,7 @@ body {
     color: var(--text-dark);
     font-weight: 500;
     transition: color 0.3s;
+    line-height: 1;
 }
 
 .nav-menu a:hover {
