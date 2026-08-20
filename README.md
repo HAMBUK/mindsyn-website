@@ -1,154 +1,105 @@
-# MindSyn - 회사 웹사이트
+# MindSyn 웹사이트 리뉴얼 (2026)
 
-## 개요
-MindSyn은 Brain-Inspired AI 기술을 개발하는 스타트업의 공식 웹사이트입니다.
+`mindsyn.net` 정적 사이트의 리뉴얼 버전입니다. 빌드 도구 없이 순수 HTML/CSS/JS로 되어 있어
+파일을 그대로 올리면 배포됩니다.
 
-## 파일 구조
 ```
-mindsyn-website/
-├── index.html          # 메인 HTML 파일
-├── styles.css          # 스타일시트
-├── script.js           # JavaScript 파일
-├── images/             # 이미지 폴더
-│   ├── logo.png        # 메인 로고 (가로형)
-│   ├── logo-vertical.png # 세로형 로고
-│   └── chip.png        # 칩 이미지
-├── documents/          # 문서 폴더
-│   ├── paper.pdf       # 논문 (MindSyn_Paper.pdf)
-│   └── poster.pptx     # 포스터 (BCL_SUNY Research Challenge)
-├── resources/          # 원본 리소스 폴더
-│   ├── MindSyn_01_로고.png
-│   ├── MindSyn_04_관련이미지1.png
-│   ├── MindSyn_Paper.pdf
-│   └── BCL_SUNY Research Challenge Poster.pptx
-└── README.md
+mindsyn-website_new/
+├── index.html            # 전체 페이지 (한 페이지, 섹션 앵커)
+├── assets/
+│   ├── css/styles.css    # 디자인 시스템 + 전 섹션 스타일
+│   └── js/
+│       ├── visuals.js    # 캔버스 그래픽 (스파이크 래스터, 연산 패브릭 비교)
+│       └── main.js       # 내비게이션, 다국어, 스크롤 연출, 라이트박스
+├── images/
+│   ├── mark.svg          # 로고 심볼을 SVG로 재현 (파비콘 겸용, 무한 확대 가능)
+│   ├── wordmark.png      # 워드마크만 잘라낸 로고 (다크 배경에서 invert 처리)
+│   └── ...               # 기존 이미지 그대로
+├── resources/
+│   ├── *.mp4             # 데모 영상 (기존과 동일)
+│   ├── poster-*.jpg      # 영상 썸네일 (ffmpeg으로 추출, 자동 재생 없이 지연 로딩)
+│   └── MindSyn_Paper.pdf
+├── documents/
+└── CNAME                 # mindsyn.net
 ```
 
-## ✅ 완료된 설정
+## 로컬에서 보기
 
-### 이미지 파일 ✓
-- ✅ `images/logo.png` - MindSyn 로고 (네비게이션 바)
-- ✅ `images/chip.png` - 뇌 기반 칩 이미지 (Hero 섹션)
-- ✅ `images/logo-vertical.png` - 로고 (About 섹션)
-
-### 문서 파일 ✓
-- ✅ `documents/paper.pdf` - 연구 논문
-- ✅ `documents/poster.pptx` - 연구 포스터
-
-## 웹사이트 실행 방법
-
-### 로컬 서버로 실행 (권장)
 ```bash
-cd mindsyn-website
+cd mindsyn-website_new
 python3 -m http.server 8000
+# http://localhost:8000
 ```
-그런 다음 브라우저에서 `http://localhost:8000` 접속
 
-### 또는 직접 HTML 파일 열기
+`file://`로 직접 열어도 동작하지만, 영상 재생은 로컬 서버를 통해 확인하는 편이 정확합니다.
+
+## 디자인 개요
+
+- **브랜드 모티프**: 로고 심볼 자체가 스파이크 래스터 플롯 모양이라, 이 패턴을 사이트
+  전체의 그래픽 언어로 사용했습니다. 히어로 배경은 실제로 뉴런 집단이 발화하는 방식
+  (포아송 발화 + 주기적 population burst)으로 그려지는 라이브 래스터입니다.
+- **컬러**: 로고에서 그대로 추출한 `#19D1FF → #4C24FF` 그라디언트. 다크 베이스
+  `#05070E` 위에서 전 섹션이 같은 톤을 유지하고, 위계는 배경 밝기 대신 반투명
+  카드와 헤어라인, 은은한 글로우로 만듭니다.
+- **타이포**: Pretendard Variable (CDN). 한글 줄바꿈은 `word-break: keep-all`로
+  단어 단위로 끊습니다.
+- **모션**: 스크롤 위치에 따라 진행되는 스티키 섹션 두 개 (작동 원리, 칩 스테이지),
+  스크롤 리빌, 숫자 카운트업, 마그네틱 버튼. `prefers-reduced-motion`을 켜면
+  모든 애니메이션이 멈추고 정적인 레이아웃으로 대체됩니다.
+
+## 콘텐츠 수정하기
+
+### 한국어 / 영어 문구
+
+기본 언어는 **영어**입니다. HTML 본문에 영어가 그대로 들어 있어 JS가 실행되기 전에도,
+검색엔진에도 영어가 보입니다. 한국어는 `data-ko` 속성에 담겨 있고 토글을 누르면 교체됩니다.
+
+```html
+<p data-ko="한국어 문장" data-en="English sentence">English sentence</p>
+```
+
+**문구를 고칠 때는 속성과 본문을 함께 고쳐야 합니다.** 영어는 `data-en`과 본문 두 곳,
+한국어는 `data-ko` 한 곳입니다. 한쪽만 고치면 화면과 토글 결과가 어긋납니다.
+
+기본 언어를 바꾸려면 `assets/js/main.js`의 `DEFAULT_LANG`과 HTML 본문 텍스트를 함께 바꾸면
+됩니다. 방문자가 토글을 직접 누른 경우에만 `localStorage`(`mindsyn-lang`)에 저장되므로,
+누른 적 없는 방문자는 항상 기본 언어를 봅니다.
+
+### 데모 영상 추가
+
+1. `resources/`에 mp4를 넣고, 썸네일을 뽑습니다.
+   ```bash
+   ffmpeg -ss 12 -i resources/새영상.mp4 -vframes 1 -vf scale=1280:-2 -q:v 4 resources/poster-새영상.jpg
+   ```
+2. `index.html`의 `.demo-grid` 안에 `.dcard` 블록을 복사해 `data-video`, `data-title`,
+   포스터 경로, 문구를 바꿉니다. (카드는 2열 그리드라 짝수 개가 보기 좋습니다.)
+
+### 논문 추가
+
+`index.html`의 `<article class="paper">` 블록을 복사하고, BibTeX는 `<pre class="paper__bib">`
+안에 넣은 뒤 버튼의 `data-bib` 값과 `id`를 새로 맞춰 주면 됩니다.
+
+## 배포 (GitHub Pages)
+
+기존 저장소(`HAMBUK/mindsyn-website`)와 동일한 방식입니다.
+
 ```bash
-cd mindsyn-website
-xdg-open index.html  # Linux
+cd mindsyn-website_new
+git init && git add -A && git commit -m "Site renewal"
+git remote add origin https://github.com/HAMBUK/mindsyn-website.git
+git push -f origin main        # 기존 사이트를 교체하는 경우
 ```
 
-## Google Sites로 이전하기
+`CNAME`이 포함되어 있으므로 커스텀 도메인 설정은 그대로 유지됩니다.
+기존 버전은 `../mindsyn-website`에 그대로 남아 있습니다.
 
-### 방법 1: HTML 직접 임베드
-1. Google Sites 접속 (sites.google.com)
-2. 새 사이트 만들기
-3. "삽입" > "임베드" 선택
-4. HTML 코드 붙여넣기
+## 확인이 필요한 내용
 
-### 방법 2: 콘텐츠 복사
-Google Sites는 사용자 정의 HTML/CSS를 제한적으로 지원하므로, 
-다음 방법으로 콘텐츠를 이전하는 것을 권장합니다:
-
-1. **섹션별로 페이지 생성**
-   - Home
-   - About
-   - Technology
-   - Research
-   - Team
-   - Contact
-
-2. **이미지 업로드**
-   - Google Sites에 이미지를 직접 업로드
-   - 각 섹션에 맞게 배치
-
-3. **텍스트 콘텐츠 복사**
-   - index.html의 텍스트를 섹션별로 복사하여 붙여넣기
-
-4. **디자인 조정**
-   - Google Sites의 테마를 파란색/보라색 계열로 설정
-   - 그라데이션 효과는 이미지로 대체
-
-### 방법 3: 외부 호스팅 + Google Sites 링크
-1. GitHub Pages, Netlify, Vercel 등에 이 웹사이트 호스팅
-2. Google Sites를 랜딩 페이지로 사용하고 메인 사이트로 연결
-
-## 웹사이트 섹션 설명
-
-### 1. Home (Hero)
-- 회사 로고와 슬로건
-- "BRAIN INSPIRED" 태그라인
-- 칩 이미지
-- CTA 버튼
-
-### 2. About
-- 회사 소개
-- 미션과 비전
-- 핵심 통계 (에너지 효율, 실시간 처리, Edge AI)
-
-### 3. Technology
-- Spiking Neural Networks
-- Event-Driven Computing
-- Deep Learning Optimization
-- Edge AI Solutions
-
-### 4. Applications
-- 컴퓨터 비전
-- 의료 AI
-- 자율주행
-- 로보틱스
-- IoT & 스마트 센서
-- 뇌-컴퓨터 인터페이스
-
-### 5. Research
-- 논문 및 연구 성과
-- 포스터
-
-### 6. Team
-- 창업자 및 팀 소개
-
-### 7. Contact
-- 연락처 정보
-- 문의 폼
-
-## 커스터마이징
-
-### 색상 변경
-`styles.css` 파일의 `:root` 섹션에서 색상 변경:
-```css
-:root {
-    --primary-color: #00D4FF;    /* 메인 컬러 (청록색) */
-    --secondary-color: #5B4DFF;  /* 보조 컬러 (보라색) */
-    --dark-bg: #0A0E27;          /* 다크 배경 */
-}
-```
-
-### 콘텐츠 수정
-`index.html` 파일에서 텍스트 내용 수정
-
-### 추가 기능
-- 팀 멤버 추가
-- 블로그 섹션
-- 뉴스레터 구독
-- 소셜 미디어 링크
-
-## 브라우저 호환성
-- Chrome (권장)
-- Firefox
-- Safari
-- Edge
-
-## 라이선스
-© 2024 MindSyn. All rights reserved.
+- **ASIC 일정**: 이전 사이트에는 "2026년 상반기 ASIC 제조 / Coming 2026"으로 적혀 있었지만
+  이미 지난 시점이라, 날짜 대신 "ASIC 개발 진행 중"으로 표현했습니다 (히어로 배지와
+  개발 현황 로드맵). 확정된 일정이 있으면 그 문구로 바꾸시면 됩니다.
+- **성능 수치**: 10-100× 에너지 효율, <1ms 지연, 1M 뉴런, <1W 전력은 이전 사이트의 수치를
+  그대로 옮긴 것입니다.
+- **연구팀 소개**: 이전 사이트의 팀원 소개(`bio`)가 비어 있어 이름과 직함만 표시했습니다.
+- **연락처**: `yoonseok.yang@sunykorea.ac.kr` (이전 푸터에 있던 `contact@mindsyn.ai`는
+  본문 연락처와 달라서 제외했습니다).

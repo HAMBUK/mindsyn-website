@@ -1,649 +1,507 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" data-lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindSyn - Brain Inspired AI Technology</title>
-    <link rel="icon" type="image/png" href="images/MINDSYN_NOLETTER_LOGO.png">
-    <link rel="apple-touch-icon" href="images/MINDSYN_NOLETTER_LOGO.png">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05070E">
+<title>MindSyn | Brain-Inspired AI Semiconductor</title>
+<meta name="description" content="MindSyn builds MindCore, a spike-driven neuromorphic processor. It computes only when events occur, running on-device AI at 10-100x the energy efficiency.">
+<meta property="og:title" content="MindSyn | Brain-Inspired AI Semiconductor">
+<meta property="og:description" content="Spike-driven neuromorphic computing. MindCore computes only when events happen.">
+<meta property="og:image" content="https://mindsyn.net/images/chip.jpg">
+<meta property="og:url" content="https://mindsyn.net/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="images/mark.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="images/MINDSYN_letter_logo.png" alt="MindSyn Logo">
-            </div>
-            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li class="lang-switcher">
-                    <button id="langBtn" class="lang-btn">
-                        <span class="lang-icon">🌐</span>
-                        <span id="currentLang">한국어</span>
-                    </button>
-                </li>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#product">Product</a></li>
-                <li><a href="#demo">Demo</a></li>
-                <li><a href="#technology">Technology</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+<a class="skip-link" href="#main" data-ko="본문으로 건너뛰기" data-en="Skip to content">Skip to content</a>
+
+<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+<!-- ══════════════ NAV ══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="MindSyn home">
+      <img class="brand__mark" src="images/mark.svg" alt="" width="34" height="26">
+      <img class="brand__word" src="images/wordmark.png" alt="MindSyn">
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#shift" data-ko="기술 원리" data-en="Why">Why</a>
+      <a href="#mindcore">MindCore</a>
+      <a href="#tech" data-ko="기술" data-en="Technology">Technology</a>
+      <a href="#demo" data-ko="데모" data-en="Demo">Demo</a>
+      <a href="#research" data-ko="연구" data-en="Research">Research</a>
+      <a href="#team" data-ko="팀" data-en="Team">Team</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>MindSyn</h1>
-                <h2>BRAIN INSPIRED</h2>
-                <p class="tagline" data-ko="차세대 뇌 기반 인공지능 기술을 선도합니다" data-en="Leading Next-Generation Brain-Inspired AI Technology">차세대 뇌 기반 인공지능 기술을 선도합니다</p>
-                <p class="hero-subtitle" data-ko="생물학적 신경망의 효율성을 모방한 뉴로모픽 AI 반도체 MindCore<br>저전력, 고성능 온디바이스 AI의 새로운 패러다임을 제시합니다" data-en="MindCore: Neuromorphic AI chip mimicking biological neural efficiency<br>Presenting a new paradigm for low-power, high-performance on-device AI">
-                    생물학적 신경망의 효율성을 모방한 뉴로모픽 AI 반도체 MindCore<br>
-                    저전력, 고성능 온디바이스 AI의 새로운 패러다임을 제시합니다
-                </p>
-                <div class="cta-buttons">
-                    <a href="#technology" class="btn btn-primary" data-ko="기술 알아보기" data-en="Explore Technology">기술 알아보기</a>
-                    <a href="#contact" class="btn btn-secondary" data-ko="문의하기" data-en="Contact Us">문의하기</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/chip.png" alt="Brain Inspired Chip">
-            </div>
+    <div class="nav__actions">
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">
+        <span class="lang__dot"></span><span id="langLabel">KO</span>
+      </button>
+      <a class="btn btn--sm btn--ghost nav__cta" href="#contact" data-ko="문의하기" data-en="Contact">Contact</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#shift" data-ko="기술 원리" data-en="Why">Why</a>
+    <a href="#mindcore">MindCore</a>
+    <a href="#tech" data-ko="기술" data-en="Technology">Technology</a>
+    <a href="#demo" data-ko="데모" data-en="Demo">Demo</a>
+    <a href="#applications" data-ko="응용 분야" data-en="Applications">Applications</a>
+    <a href="#research" data-ko="연구" data-en="Research">Research</a>
+    <a href="#team" data-ko="팀" data-en="Team">Team</a>
+    <a href="#contact" data-ko="문의하기" data-en="Contact">Contact</a>
+  </nav>
+</div>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero__canvas" id="spikeField" aria-hidden="true"></canvas>
+  <div class="hero__grain" aria-hidden="true"></div>
+
+  <div class="hero__body">
+    <p class="eyebrow reveal" data-ko="뉴로모픽 AI 프로세서" data-en="Neuromorphic AI Processor">Neuromorphic AI Processor</p>
+
+    <h1 class="hero__title">
+      <span class="line"><span class="line__in reveal" data-ko="뇌처럼" data-en="Compute">Compute</span></span>
+      <span class="line"><span class="line__in grad reveal" data-ko="계산한다" data-en="like a brain.">like a brain.</span></span>
+    </h1>
+
+    <p class="hero__lead reveal" data-ko="MindCore는 스파이크가 발생하는 순간에만 연산합니다. 클럭 대신 이벤트가 연산을 이끄는 구조로, 배터리만으로도 실시간 AI를 구동합니다." data-en="MindCore computes only at the instant a spike arrives. Event-driven instead of clock-driven, it runs real-time AI on a battery.">
+      MindCore computes only at the instant a spike arrives. Event-driven instead of clock-driven, it runs real-time AI on a battery.
+    </p>
+
+    <div class="hero__cta reveal">
+      <a class="btn btn--primary magnetic" href="#mindcore" data-ko="MindCore 살펴보기" data-en="Explore MindCore">Explore MindCore</a>
+      <a class="btn btn--ghost magnetic" href="#demo">
+        <span class="btn__play" aria-hidden="true"></span>
+        <span data-ko="동작 영상 보기" data-en="Watch it run">Watch it run</span>
+      </a>
+    </div>
+
+    <p class="hero__note reveal" data-ko="FPGA 프로토타입 검증 완료 · ASIC 개발 진행 중" data-en="FPGA prototype verified · ASIC in development">FPGA prototype verified · ASIC in development</p>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
+    <span data-ko="스크롤" data-en="Scroll">Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════ STAT STRIP ══════════════ -->
+<section class="stats" aria-label="Key numbers">
+  <div class="wrap stats__grid">
+    <div class="stat reveal">
+      <div class="stat__value"><span class="count" data-from="1" data-to="100" data-suffix="">100</span><span class="stat__unit">×</span></div>
+      <div class="stat__label" data-ko="에너지 효율 (최대)" data-en="Energy efficiency (up to)">Energy efficiency (up to)</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat__value"><span class="stat__lt">&lt;</span><span class="count" data-from="9" data-to="1">1</span><span class="stat__unit">ms</span></div>
+      <div class="stat__label" data-ko="추론 지연 시간" data-en="Inference latency">Inference latency</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat__value"><span class="count" data-from="0" data-to="1">1</span><span class="stat__unit">M</span></div>
+      <div class="stat__label" data-ko="뉴런 규모" data-en="Neuron scale">Neuron scale</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat__value"><span class="stat__lt">&lt;</span><span class="count" data-from="9" data-to="1">1</span><span class="stat__unit">W</span></div>
+      <div class="stat__label" data-ko="소비 전력 목표" data-en="Target power">Target power</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ THE SHIFT (sticky story) ══════════════ -->
+<section class="shift" id="shift">
+  <div class="shift__sticky">
+    <div class="wrap shift__layout">
+
+      <div class="shift__copy">
+        <p class="eyebrow" data-ko="작동 원리" data-en="The shift">The shift</p>
+        <div class="shift__steps">
+          <article class="step" data-step="0">
+            <h2 class="step__title" data-ko="기존 AI 칩은 아무 변화가 없어도 계산합니다" data-en="Today's AI chips compute even when nothing happens">Today's AI chips compute even when nothing happens</h2>
+            <p class="step__text" data-ko="매 클럭마다 수천 개 연산 유닛이 일제히 깨어납니다. 입력이 전혀 바뀌지 않아도 전력 소모는 동일합니다." data-en="Every clock tick wakes thousands of compute units at once. Even when the input has not changed at all, the power is spent all the same.">Every clock tick wakes thousands of compute units at once. Even when the input has not changed at all, the power is spent all the same.</p>
+          </article>
+          <article class="step" data-step="1">
+            <h2 class="step__title" data-ko="MindCore는 스파이크가 도착한 곳에서만 깨어납니다" data-en="MindCore wakes only where a spike lands">MindCore wakes only where a spike lands</h2>
+            <p class="step__text" data-ko="생물학적 뉴런처럼, 변화가 감지된 곳에서만 연산합니다. 나머지 회로는 꺼져 있으므로 전력을 소모하지 않습니다." data-en="Like a biological neuron, computation happens only where something changed. The rest of the fabric stays silent, and silence costs nothing.">Like a biological neuron, computation happens only where something changed. The rest of the fabric stays silent, and silence costs nothing.</p>
+          </article>
+          <article class="step" data-step="2">
+            <h2 class="step__title" data-ko="같은 입력, 같은 판단. 연산은 수십분의 1" data-en="Same input, same decision, a fraction of the work">Same input, same decision, a fraction of the work</h2>
+            <p class="step__text" data-ko="이벤트 구동 방식과 시간 부호화(temporal coding)의 결합으로, 정확도는 유지하면서 에너지 소모를 10~100배 절감합니다." data-en="Event-driven processing combined with temporal coding cuts energy by 10-100x while holding accuracy.">Event-driven processing combined with temporal coding cuts energy by 10-100x while holding accuracy.</p>
+          </article>
         </div>
-    </section>
+        <div class="shift__dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title" data-ko="About MindSyn" data-en="About MindSyn">About MindSyn</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 data-ko="뇌의 효율성을 모방한 차세대 AI" data-en="Next-Gen AI Mimicking Brain Efficiency">뇌의 효율성을 모방한 차세대 AI</h3>
-                    <p data-ko="MindSyn은 생물학적 뇌의 작동 원리에서 영감을 받은 뉴로모픽 기술을 개발하는 혁신적인 AI 스타트업입니다." data-en="MindSyn is an innovative AI startup developing neuromorphic technology inspired by the operating principles of biological brains.">
-                        MindSyn은 생물학적 뇌의 작동 원리에서 영감을 받은 
-                        <strong>뉴로모픽</strong> 기술을 개발하는 혁신적인 AI 스타트업입니다.
-                    </p>
-                    <p data-ko="우리의 미션은 저전력, 고효율의 뇌 기반 컴퓨팅 솔루션을 통해 인공지능의 에너지 효율성을 획기적으로 개선하는 것입니다. Event-driven 처리 방식과 시간 정보를 활용한 temporal coding으로 기존 딥러닝 대비 혁신적인 성능을 제공합니다." data-en="Our mission is to dramatically improve AI energy efficiency through low-power, high-efficiency brain-based computing solutions. We deliver revolutionary performance compared to traditional deep learning through event-driven processing and temporal coding utilizing time information.">
-                        우리의 미션은 저전력, 고효율의 뇌 기반 컴퓨팅 솔루션을 통해
-                        인공지능의 에너지 효율성을 획기적으로 개선하는 것입니다.
-                        Event-driven 처리 방식과 시간 정보를 활용한 temporal coding으로
-                        기존 딥러닝 대비 혁신적인 성능을 제공합니다.
-                    </p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <h4>10-100x</h4>
-                            <p data-ko="에너지 효율 향상" data-en="Energy Efficiency">에너지 효율 향상</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>Real-time</h4>
-                            <p data-ko="이벤트 기반 처리" data-en="Event-driven Processing">이벤트 기반 처리</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>Edge AI</h4>
-                            <p data-ko="최적화된 솔루션" data-en="Optimized Solutions">최적화된 솔루션</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="images/logo-vertical.png" alt="MindSyn Technology">
-                </div>
+      <figure class="shift__viz">
+        <div class="viz-frame">
+          <div class="viz-frame__bar">
+            <span class="viz-frame__label" id="vizLabel">Clock-driven</span>
+            <span class="viz-frame__ops"><span id="vizOps">0</span> <span data-ko="연산" data-en="ops">ops</span></span>
+          </div>
+          <canvas id="fabricCanvas" aria-label="Comparison of clock-driven and event-driven computation"></canvas>
+          <div class="viz-frame__meters">
+            <div class="meter" data-kind="clock">
+              <span class="meter__name">Clock-driven</span>
+              <span class="meter__track"><i id="meterClock"></i></span>
+              <span class="meter__val" id="meterClockVal">100%</span>
             </div>
+            <div class="meter" data-kind="event">
+              <span class="meter__name">Event-driven</span>
+              <span class="meter__track"><i id="meterEvent"></i></span>
+              <span class="meter__val" id="meterEventVal">—</span>
+            </div>
+          </div>
         </div>
-    </section>
+        <figcaption class="viz-cap" data-ko="같은 입력 처리 시 활성화되는 연산 유닛 비교" data-en="Compute units activated while processing the same input stream">Compute units activated while processing the same input stream</figcaption>
+      </figure>
 
-    <!-- Product Section -->
-    <section id="product" class="section product">
-        <div class="container">
-            <h2 class="section-title" data-ko="MindCore" data-en="MindCore">MindCore</h2>
-            <p class="section-subtitle" data-ko="차세대 뉴로모픽 AI 프로세서 (Coming 2026)" data-en="Next-Gen Neuromorphic AI Processor (Coming 2026)">차세대 뉴로모픽 AI 프로세서 (Coming 2026)</p>
-            
-            <div class="product-overview">
-                <div class="product-image">
-                    <img src="images/chip.png" alt="MindCore 1 Chip">
-                </div>
-                <div class="product-intro">
-                    <h3 data-ko="혁신적인 Brain-Inspired Computing" data-en="Innovative Brain-Inspired Computing">혁신적인 Brain-Inspired Computing</h3>
-                    <p data-ko="MindCore는 MindSyn이 개발 중인 차세대 뉴로모픽 프로세서입니다. 현재 FPGA 환경에서 검증을 완료하였으며, 생물학적 뇌의 효율성을 하드웨어로 구현하여 Spiking Neural Networks를 가속화합니다. 2026년 상반기 ASIC 제조(Fabrication)를 통해 획기적인 에너지 효율성과 실시간 처리 성능을 갖춘 상용 칩으로 출시될 예정입니다." data-en="MindCore is a next-generation neuromorphic processor under development by MindSyn. Currently verified in FPGA environment, it accelerates Spiking Neural Networks by implementing biological brain efficiency in hardware. Scheduled for commercial release in the first half of 2026 through ASIC fabrication with breakthrough energy efficiency and real-time processing performance.">
-                        MindCore는 MindSyn이 개발 중인 차세대 뉴로모픽 프로세서입니다. 
-                        현재 FPGA 환경에서 검증을 완료하였으며, 생물학적 뇌의 효율성을 
-                        하드웨어로 구현하여 Spiking Neural Networks를 가속화합니다.
-                        2026년 상반기 ASIC 제조(Fabrication)를 통해 
-                        획기적인 에너지 효율성과 실시간 처리 성능을 갖춘 상용 칩으로 출시될 예정입니다.
-                    </p>
-                    <div class="product-highlights">
-                        <div class="highlight-badge">
-                            <span class="badge-value">100x</span>
-                            <span class="badge-label" data-ko="에너지 효율" data-en="Energy Efficiency">에너지 효율</span>
-                        </div>
-                        <div class="highlight-badge">
-                            <span class="badge-value">1M</span>
-                            <span class="badge-label" data-ko="뉴런" data-en="Neurons">뉴런</span>
-                        </div>
-                        <div class="highlight-badge">
-                            <span class="badge-value">&lt;1W</span>
-                            <span class="badge-label" data-ko="소비 전력" data-en="Power Consumption">소비 전력</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </div>
+  </div>
+</section>
 
-            <!-- Specifications -->
-            <div class="specifications">
-                <h3 data-ko="⚙️ Technical Specifications" data-en="⚙️ Technical Specifications">⚙️ Technical Specifications</h3>
-                <div class="spec-coming-soon">
-                    <div class="coming-soon-icon">📅</div>
-                    <h4 data-ko="상세 사양 공개 예정" data-en="Detailed Specifications Coming Soon">상세 사양 공개 예정</h4>
-                    <p data-ko="MindCore의 정확한 기술 사양은 ASIC 제조 및 최적화 완료 후<br>2026년 상반기에 공개될 예정입니다." data-en="Detailed technical specifications of MindCore will be released<br>in the first half of 2026 after ASIC fabrication and optimization.">
-                        MindCore의 정확한 기술 사양은 ASIC 제조 및 최적화 완료 후<br>
-                        2026년 상반기에 공개될 예정입니다.
-                    </p>
-                    <div class="spec-preview">
-                        <div class="preview-item">
-                            <span class="preview-label">🧠 Architecture</span>
-                            <span class="preview-value" data-ko="고밀도 뉴로모픽 설계" data-en="High-density Neuromorphic Design">고밀도 뉴로모픽 설계</span>
-                        </div>
-                        <div class="preview-item">
-                            <span class="preview-label">⚡ Performance</span>
-                            <span class="preview-value" data-ko="초고속 실시간 추론" data-en="Ultra-fast Real-time Inference">초고속 실시간 추론</span>
-                        </div>
-                        <div class="preview-item">
-                            <span class="preview-label">🔋 Power</span>
-                            <span class="preview-value" data-ko="초저전력 설계 (목표: &lt;1W)" data-en="Ultra-low Power Design (Target: &lt;1W)">초저전력 설계 (목표: &lt;1W)</span>
-                        </div>
-                        <div class="preview-item">
-                            <span class="preview-label">📐 Integration</span>
-                            <span class="preview-value" data-ko="확장 가능한 인터페이스" data-en="Scalable Interface">확장 가능한 인터페이스</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ══════════════ MINDCORE ══════════════ -->
+<section class="mindcore" id="mindcore">
+  <div class="mindcore__intro wrap">
+    <p class="eyebrow reveal" data-ko="제품" data-en="Product">Product</p>
+    <h2 class="display reveal">MindCore</h2>
+    <p class="lede reveal" data-ko="스파이크 구동 방식의 프로그래머블 뉴로모픽 가속기. 생물학적 뇌의 효율을 실리콘으로 구현한, 온디바이스 AI 전용 프로세서입니다." data-en="A spike-driven, programmable neuromorphic accelerator. The efficiency of a biological brain, cast into silicon for on-device AI.">A spike-driven, programmable neuromorphic accelerator. The efficiency of a biological brain, cast into silicon for on-device AI.</p>
+  </div>
 
-            <!-- Features -->
-            <div class="features">
-                <h3 data-ko="✨ Key Features" data-en="✨ Key Features">✨ Key Features</h3>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🧠</div>
-                        <h4>Biological Neural Modeling</h4>
-                        <p data-ko="실제 뇌 뉴런의 Leaky Integrate-and-Fire (LIF) 모델을 하드웨어로 구현하여 생물학적 신경망의 동작을 정확히 재현합니다." data-en="Implements Leaky Integrate-and-Fire (LIF) models of real brain neurons in hardware to accurately reproduce biological neural network operations.">
-                            실제 뇌 뉴런의 Leaky Integrate-and-Fire (LIF) 모델을 
-                            하드웨어로 구현하여 생물학적 신경망의 동작을 정확히 재현합니다.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h4>Event-Driven Processing</h4>
-                        <p data-ko="스파이크 이벤트가 발생할 때만 연산을 수행하는 비동기 방식으로 불필요한 전력 소비를 최소화합니다." data-en="Minimizes unnecessary power consumption through asynchronous processing that performs computations only when spike events occur.">
-                            스파이크 이벤트가 발생할 때만 연산을 수행하는 
-                            비동기 방식으로 불필요한 전력 소비를 최소화합니다.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h4>Real-Time Learning</h4>
-                        <p data-ko="STDP (Spike-Timing-Dependent Plasticity) 기반 온칩 학습으로 실시간 적응형 AI를 구현합니다." data-en="Implements real-time adaptive AI through STDP (Spike-Timing-Dependent Plasticity) based on-chip learning.">
-                            STDP (Spike-Timing-Dependent Plasticity) 기반 
-                            온칩 학습으로 실시간 적응형 AI를 구현합니다.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔗</div>
-                        <h4>Scalable Architecture</h4>
-                        <p data-ko="다중 칩 확장 가능한 아키텍처로 대규모 신경망 시스템 구축이 가능합니다." data-en="Enables large-scale neural network system construction with multi-chip scalable architecture.">
-                            다중 칩 확장 가능한 아키텍처로 
-                            대규모 신경망 시스템 구축이 가능합니다.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h4>Low Latency Inference</h4>
-                        <p data-ko="1ms 이하의 초저지연 추론으로 실시간 의사결정이 필요한 애플리케이션에 최적화되었습니다." data-en="Optimized for applications requiring real-time decision-making with ultra-low latency inference under 1ms.">
-                            1ms 이하의 초저지연 추론으로 
-                            실시간 의사결정이 필요한 애플리케이션에 최적화되었습니다.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">♻️</div>
-                        <h4>Energy Harvesting Ready</h4>
-                        <p data-ko="초저전력 설계로 태양광, 진동 등 에너지 하베스팅 환경에서도 동작 가능합니다." data-en="Can operate in energy harvesting environments such as solar and vibration with ultra-low power design.">
-                            초저전력 설계로 태양광, 진동 등 
-                            에너지 하베스팅 환경에서도 동작 가능합니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
+  <div class="chipstage" id="chipStage">
+    <div class="chipstage__sticky">
+      <div class="chipstage__glow" aria-hidden="true"></div>
+      <img class="chipstage__img" src="images/chip.jpg" alt="MindCore neuromorphic processor" loading="lazy" decoding="async">
+      <ul class="chipstage__callouts">
+        <li class="callout" style="--i:0">
+          <span class="callout__k">Architecture</span>
+          <span class="callout__v" data-ko="스파이크 구동 프로그래머블 코어" data-en="Spike-driven programmable core">Spike-driven programmable core</span>
+        </li>
+        <li class="callout" style="--i:1">
+          <span class="callout__k">Neuron model</span>
+          <span class="callout__v" data-ko="하드웨어 LIF 뉴런" data-en="Hardware LIF neurons">Hardware LIF neurons</span>
+        </li>
+        <li class="callout" style="--i:2">
+          <span class="callout__k">Learning</span>
+          <span class="callout__v" data-ko="STDP 기반 온칩 학습" data-en="STDP-based on-chip learning">STDP-based on-chip learning</span>
+        </li>
+        <li class="callout" style="--i:3">
+          <span class="callout__k">Scale-out</span>
+          <span class="callout__v" data-ko="멀티칩 확장 인터커넥트" data-en="Multi-chip interconnect">Multi-chip interconnect</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-            <!-- Use Cases -->
-            <div class="use-cases">
-                <h3 data-ko="💡 Use Cases" data-en="💡 Use Cases">💡 Use Cases</h3>
-                <div class="use-case-grid">
-                    <div class="use-case-item">
-                        <h4>🤖 Edge AI</h4>
-                        <p data-ko="IoT 디바이스, 드론, 로봇에서 실시간 AI 처리" data-en="Real-time AI processing in IoT devices, drones, and robots">IoT 디바이스, 드론, 로봇에서 실시간 AI 처리</p>
-                    </div>
-                    <div class="use-case-item">
-                        <h4>🚗 <span data-ko="자율주행" data-en="Autonomous Driving">자율주행</span></h4>
-                        <p data-ko="저전력 환경 인식 및 실시간 의사결정" data-en="Low-power environment perception and real-time decision making">저전력 환경 인식 및 실시간 의사결정</p>
-                    </div>
-                    <div class="use-case-item">
-                        <h4>🏥 <span data-ko="의료기기" data-en="Medical Devices">의료기기</span></h4>
-                        <p data-ko="웨어러블 헬스케어 AI 진단 시스템" data-en="Wearable healthcare AI diagnostic systems">웨어러블 헬스케어 AI 진단 시스템</p>
-                    </div>
-                    <div class="use-case-item">
-                        <h4>📹 <span data-ko="컴퓨터 비전" data-en="Computer Vision">컴퓨터 비전</span></h4>
-                        <p data-ko="이벤트 카메라 기반 실시간 객체 추적" data-en="Real-time object tracking with event cameras">이벤트 카메라 기반 실시간 객체 추적</p>
-                    </div>
-                </div>
-            </div>
+  <div class="wrap">
+    <div class="feature-grid">
+      <article class="fcard reveal">
+        <div class="fcard__ico" data-ico="neuron" aria-hidden="true"></div>
+        <h3>Biological Neural Modeling</h3>
+        <p data-ko="LIF(Leaky Integrate-and-Fire) 뉴런을 하드웨어로 직접 구현하여, 실제 신경 회로의 동작을 충실히 재현합니다." data-en="Leaky Integrate-and-Fire neurons implemented directly in hardware, reproducing the behaviour of real neural circuits.">Leaky Integrate-and-Fire neurons implemented directly in hardware, reproducing the behaviour of real neural circuits.</p>
+      </article>
+      <article class="fcard reveal">
+        <div class="fcard__ico" data-ico="bolt" aria-hidden="true"></div>
+        <h3>Event-Driven Processing</h3>
+        <p data-ko="비동기 회로 설계로 스파이크 발생 시에만 연산합니다. 불필요한 스위칭 전력이 원천적으로 발생하지 않습니다." data-en="An asynchronous fabric that computes only on spike events, eliminating wasted switching power.">An asynchronous fabric that computes only on spike events, eliminating wasted switching power.</p>
+      </article>
+      <article class="fcard reveal">
+        <div class="fcard__ico" data-ico="target" aria-hidden="true"></div>
+        <h3>Real-Time Learning</h3>
+        <p data-ko="STDP(Spike-Timing-Dependent Plasticity) 기반 온칩 학습으로, 칩이 실시간으로 환경에 적응합니다." data-en="On-chip STDP learning brings real-time adaptation to the edge.">On-chip STDP learning brings real-time adaptation to the edge.</p>
+      </article>
+      <article class="fcard reveal">
+        <div class="fcard__ico" data-ico="link" aria-hidden="true"></div>
+        <h3>Scalable Architecture</h3>
+        <p data-ko="여러 칩을 연결해 확장 가능한 구조로, 대규모 신경망 시스템 구축이 가능합니다." data-en="A multi-chip scalable architecture for building large neural systems.">A multi-chip scalable architecture for building large neural systems.</p>
+      </article>
+      <article class="fcard reveal">
+        <div class="fcard__ico" data-ico="shield" aria-hidden="true"></div>
+        <h3>Low Latency Inference</h3>
+        <p data-ko="1ms 이하의 초저지연 추론으로, 즉각적인 판단이 필요한 환경에 적합합니다." data-en="Sub-millisecond inference for applications that must decide immediately.">Sub-millisecond inference for applications that must decide immediately.</p>
+      </article>
+      <article class="fcard reveal">
+        <div class="fcard__ico" data-ico="leaf" aria-hidden="true"></div>
+        <h3>Energy Harvesting Ready</h3>
+        <p data-ko="태양광이나 진동 등 에너지 하베스팅만으로도 동작하는 초저전력 설계입니다." data-en="Ultra-low power design that can run on harvested solar or vibration energy.">Ultra-low power design that can run on harvested solar or vibration energy.</p>
+      </article>
+    </div>
+
+    <div class="roadmap reveal">
+      <h3 class="roadmap__title" data-ko="개발 현황" data-en="Where we are">Where we are</h3>
+      <ol class="roadmap__list">
+        <li class="rm done">
+          <span class="rm__dot" aria-hidden="true"></span>
+          <span class="rm__k" data-ko="아키텍처 연구" data-en="Architecture research">Architecture research</span>
+          <span class="rm__v" data-ko="MCSoC 2025 논문 발표" data-en="Published at MCSoC 2025">Published at MCSoC 2025</span>
+        </li>
+        <li class="rm done">
+          <span class="rm__dot" aria-hidden="true"></span>
+          <span class="rm__k" data-ko="FPGA 프로토타입" data-en="FPGA prototype">FPGA prototype</span>
+          <span class="rm__v" data-ko="온보드 실측 검증 완료" data-en="Verified on hardware">Verified on hardware</span>
+        </li>
+        <li class="rm now">
+          <span class="rm__dot" aria-hidden="true"></span>
+          <span class="rm__k" data-ko="ASIC 구현" data-en="ASIC implementation">ASIC implementation</span>
+          <span class="rm__v" data-ko="진행 중" data-en="In progress">In progress</span>
+        </li>
+        <li class="rm">
+          <span class="rm__dot" aria-hidden="true"></span>
+          <span class="rm__k" data-ko="상용 출시" data-en="Commercial release">Commercial release</span>
+          <span class="rm__v" data-ko="상세 사양 공개 예정" data-en="Full specs to be announced">Full specs to be announced</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TECHNOLOGY ══════════════ -->
+<section class="tech" id="tech">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-ko="기술" data-en="Technology">Technology</p>
+    <h2 class="display reveal" data-ko="네 가지 핵심 기술" data-en="Four pillars">Four pillars</h2>
+    <p class="lede reveal" data-ko="알고리즘에서 실리콘, 배포까지. MindSyn이 뉴로모픽 기술 스택 전체를 직접 설계합니다." data-en="From algorithm to silicon to deployment, we design the entire neuromorphic stack ourselves.">From algorithm to silicon to deployment, we design the entire neuromorphic stack ourselves.</p>
+
+    <div class="pillars">
+      <article class="pillar reveal">
+        <span class="pillar__n">01</span>
+        <h3>Spiking Neural Networks</h3>
+        <p data-ko="생물학적 스파이킹 뉴런을 모방한 신경망 구조로, 시간 정보를 본래 형태 그대로 처리합니다." data-en="Network architecture modelled on biological spiking neurons, native to temporal information.">Network architecture modelled on biological spiking neurons, native to temporal information.</p>
+      </article>
+      <article class="pillar reveal">
+        <span class="pillar__n">02</span>
+        <h3>Event-Driven Computing</h3>
+        <p data-ko="이벤트가 발생할 때만 연산하여, 불필요한 계산과 전력 소모를 근본적으로 제거합니다." data-en="Computation is triggered by events, removing redundant work and power at the source.">Computation is triggered by events, removing redundant work and power at the source.</p>
+      </article>
+      <article class="pillar reveal">
+        <span class="pillar__n">03</span>
+        <h3>Deep Learning Optimization</h3>
+        <p data-ko="학습 알고리즘과 양자화 기법으로 SNN의 정확도를 기존 딥러닝 수준까지 끌어올립니다." data-en="Training and quantization techniques that lift SNN accuracy to conventional deep-learning levels.">Training and quantization techniques that lift SNN accuracy to conventional deep-learning levels.</p>
+      </article>
+      <article class="pillar reveal">
+        <span class="pillar__n">04</span>
+        <h3>Edge AI Solutions</h3>
+        <p data-ko="모바일과 IoT 기기를 위한 초저전력 온디바이스 AI 솔루션을 제공합니다." data-en="An ultra-low-power on-device AI stack for mobile and IoT hardware.">An ultra-low-power on-device AI stack for mobile and IoT hardware.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DEMO ══════════════ -->
+<section class="demo" id="demo">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-ko="데모" data-en="Demo">Demo</p>
+    <h2 class="display reveal" data-ko="실제 하드웨어로 검증" data-en="Running on real hardware">Running on real hardware</h2>
+    <p class="lede reveal" data-ko="시뮬레이션이 아닙니다. FPGA 프로토타입 보드에서 MindCore가 실시간으로 추론하는 모습입니다." data-en="Not a simulation. This is MindCore inferring in real time on the FPGA prototype board.">Not a simulation. This is MindCore inferring in real time on the FPGA prototype board.</p>
+
+    <div class="demo-grid">
+      <button class="dcard reveal" type="button" data-video="resources/MindCore-MNIST.mp4" data-title="MNIST">
+        <span class="dcard__media"><img src="resources/poster-mnist.jpg" alt="" loading="lazy" decoding="async"><span class="dcard__play" aria-hidden="true"></span></span>
+        <span class="dcard__body">
+          <span class="dcard__tag">Vision</span>
+          <span class="dcard__title" data-ko="MNIST 손글씨 인식" data-en="MNIST handwritten digits">MNIST handwritten digits</span>
+          <span class="dcard__text" data-ko="스파이킹 신경망으로 손글씨 숫자를 실시간 분류합니다." data-en="Real-time digit classification with a spiking neural network.">Real-time digit classification with a spiking neural network.</span>
+        </span>
+      </button>
+
+      <button class="dcard reveal" type="button" data-video="resources/MindCore-NMNIST.mp4" data-title="N-MNIST">
+        <span class="dcard__media"><img src="resources/poster-nmnist.jpg" alt="" loading="lazy" decoding="async"><span class="dcard__play" aria-hidden="true"></span></span>
+        <span class="dcard__body">
+          <span class="dcard__tag">Event camera</span>
+          <span class="dcard__title" data-ko="N-MNIST 이벤트 기반 인식" data-en="N-MNIST event-based recognition">N-MNIST event-based recognition</span>
+          <span class="dcard__text" data-ko="이벤트 카메라 출력을 변환 없이 직접 처리하여, 더 적은 연산으로 추론합니다." data-en="Event-camera streams processed as events, inferring with far less work.">Event-camera streams processed as events, inferring with far less work.</span>
+        </span>
+      </button>
+
+      <button class="dcard reveal" type="button" data-video="resources/MindCore-ADFTD.mp4" data-title="ADFTD">
+        <span class="dcard__media"><img src="resources/poster-adftd.jpg" alt="" loading="lazy" decoding="async"><span class="dcard__play" aria-hidden="true"></span></span>
+        <span class="dcard__body">
+          <span class="dcard__tag">Neuro / EEG</span>
+          <span class="dcard__title" data-ko="ADFTD 뇌파 시계열 분석" data-en="ADFTD EEG time-series analysis">ADFTD EEG time-series analysis</span>
+          <span class="dcard__text" data-ko="시간 정보가 핵심인 뇌파 데이터에서 temporal coding의 강점을 보여줍니다." data-en="Where timing carries the signal, temporal coding shows its edge.">Where timing carries the signal, temporal coding shows its edge.</span>
+        </span>
+      </button>
+
+      <button class="dcard reveal" type="button" data-video="resources/MindCore_PTB_APAVA_UCIHAR.mp4" data-title="PTB · APAVA · UCIHAR">
+        <span class="dcard__media"><img src="resources/poster-ptb.jpg" alt="" loading="lazy" decoding="async"><span class="dcard__play" aria-hidden="true"></span></span>
+        <span class="dcard__body">
+          <span class="dcard__tag">Healthcare · IoT</span>
+          <span class="dcard__title" data-ko="PTB · APAVA · UCIHAR 추론" data-en="PTB · APAVA · UCIHAR inference">PTB · APAVA · UCIHAR inference</span>
+          <span class="dcard__text" data-ko="심전도(PTB), 뇌파(APAVA), 웨어러블 활동 인식(UCIHAR)까지 하나의 칩에서." data-en="ECG (PTB), EEG (APAVA) and wearable activity recognition (UCIHAR) on one chip.">ECG (PTB), EEG (APAVA) and wearable activity recognition (UCIHAR) on one chip.</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ APPLICATIONS ══════════════ -->
+<section class="apps" id="applications">
+  <div class="wrap apps__head">
+    <div>
+      <p class="eyebrow reveal" data-ko="응용 분야" data-en="Applications">Applications</p>
+      <h2 class="display reveal" data-ko="저전력이 필수인 모든 곳" data-en="Anywhere power is precious">Anywhere power is precious</h2>
+    </div>
+    <div class="apps__nav">
+      <button class="rnd" type="button" data-scroll="-1" aria-label="Previous">‹</button>
+      <button class="rnd" type="button" data-scroll="1" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <div class="apps__rail" id="appsRail">
+    <article class="acard"><span class="acard__n">01</span><h3 data-ko="컴퓨터 비전" data-en="Computer Vision">Computer Vision</h3><p data-ko="이벤트 카메라로 실시간 객체 인식·추적" data-en="Real-time object recognition and tracking with event cameras">Real-time object recognition and tracking with event cameras</p></article>
+    <article class="acard"><span class="acard__n">02</span><h3 data-ko="의료 AI" data-en="Medical AI">Medical AI</h3><p data-ko="저전력 웨어러블 의료 기기의 AI 진단" data-en="AI diagnostics for low-power wearable medical devices">AI diagnostics for low-power wearable medical devices</p></article>
+    <article class="acard"><span class="acard__n">03</span><h3 data-ko="자율주행" data-en="Autonomous Driving">Autonomous Driving</h3><p data-ko="실시간 환경 인식과 의사결정" data-en="Real-time perception and decision making">Real-time perception and decision making</p></article>
+    <article class="acard"><span class="acard__n">04</span><h3 data-ko="로보틱스" data-en="Robotics">Robotics</h3><p data-ko="생물학적 감각-운동 제어" data-en="Biologically inspired sensorimotor control">Biologically inspired sensorimotor control</p></article>
+    <article class="acard"><span class="acard__n">05</span><h3 data-ko="IoT · 스마트 센서" data-en="IoT & Smart Sensors">IoT & Smart Sensors</h3><p data-ko="초저전력 엣지 인텔리전스" data-en="Ultra-low-power edge intelligence">Ultra-low-power edge intelligence</p></article>
+    <article class="acard"><span class="acard__n">06</span><h3 data-ko="뇌-컴퓨터 인터페이스" data-en="Brain-Computer Interface">Brain-Computer Interface</h3><p data-ko="신경 신호 처리·해석" data-en="Neural signal processing and interpretation">Neural signal processing and interpretation</p></article>
+  </div>
+</section>
+
+<!-- ══════════════ RESEARCH ══════════════ -->
+<section class="research" id="research">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-ko="연구" data-en="Research">Research</p>
+    <h2 class="display reveal" data-ko="논문에서 실리콘까지" data-en="From paper to silicon">From paper to silicon</h2>
+    <p class="lede reveal" data-ko="MindSyn의 기술은 검증된 학술 연구에 기반합니다." data-en="Our technology stands on peer-reviewed research.">Our technology stands on peer-reviewed research.</p>
+
+    <article class="paper reveal">
+      <div class="paper__main">
+        <span class="paper__year">2025</span>
+        <h3 class="paper__title">MindCore: Spike-Driven Programmable Accelerator for On-device Neuromorphic Computing</h3>
+        <p class="paper__authors">Hawon Park, Si Yong Lee, Ryangjin Lee, Yoora Kim, Yoon-Seok Yang</p>
+        <p class="paper__venue">IEEE International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC 2025)</p>
+        <div class="paper__tags">
+          <span class="chip">Spiking Neural Networks</span>
+          <span class="chip">Neuromorphic Computing</span>
+          <span class="chip">On-device AI</span>
         </div>
-    </section>
+      </div>
+      <div class="paper__side">
+        <a class="btn btn--sm btn--ghost" href="resources/MindSyn_Paper.pdf" target="_blank" rel="noopener">PDF</a>
+        <button class="btn btn--sm btn--ghost" type="button" data-bib="bib1">BibTeX</button>
+      </div>
+      <pre class="paper__bib" id="bib1" hidden>@inproceedings{park2025mindcore,
+  title     = {MindCore: Spike-Driven Programmable Accelerator for On-device Neuromorphic Computing},
+  author    = {Park, Hawon and Lee, Si Yong and Lee, Ryangjin and Kim, Yoora and Yang, Yoon-Seok},
+  booktitle = {IEEE International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)},
+  year      = {2025}
+}</pre>
+    </article>
 
-    <!-- Technology Section -->
-    <section id="technology" class="section technology">
-        <div class="container">
-            <h2 class="section-title" data-ko="Our Technology" data-en="Our Technology">Our Technology</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-icon">🧠</div>
-                    <h3>Spiking Neural Networks</h3>
-                    <p data-ko="생물학적 뉴런의 스파이킹 메커니즘을 모방한 차세대 신경망 아키텍처로 시간적 정보 처리에 최적화" data-en="Next-generation neural network architecture mimicking biological neuron spiking mechanisms, optimized for temporal information processing">
-                        생물학적 뉴런의 스파이킹 메커니즘을 모방한 
-                        차세대 신경망 아키텍처로 시간적 정보 처리에 최적화
-                    </p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">⚡</div>
-                    <h3>Event-Driven Computing</h3>
-                    <p data-ko="이벤트가 발생할 때만 계산을 수행하여 불필요한 연산을 제거하고 전력 소비를 최소화" data-en="Eliminates unnecessary computations and minimizes power consumption by performing calculations only when events occur">
-                        이벤트가 발생할 때만 계산을 수행하여
-                        불필요한 연산을 제거하고 전력 소비를 최소화
-                    </p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🎯</div>
-                    <h3>Deep Learning Optimization</h3>
-                    <p data-ko="고급 학습 알고리즘과 최적화 기법을 통해 SNN의 성능을 전통적인 딥러닝 수준으로 향상" data-en="Improves SNN performance to traditional deep learning levels through advanced learning algorithms and optimization techniques">
-                        고급 학습 알고리즘과 최적화 기법을 통해
-                        SNN의 성능을 전통적인 딥러닝 수준으로 향상
-                    </p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">📱</div>
-                    <h3>Edge AI Solutions</h3>
-                    <p data-ko="모바일 및 IoT 디바이스를 위한 초저전력 온디바이스 AI 솔루션 제공" data-en="Provides ultra-low power on-device AI solutions for mobile and IoT devices">
-                        모바일 및 IoT 디바이스를 위한 
-                        초저전력 온디바이스 AI 솔루션 제공
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="hl-grid">
+      <div class="hl reveal"><h4 data-ko="초저전력 AI" data-en="Ultra-low-power AI">Ultra-low-power AI</h4><p data-ko="이벤트 구동 처리로 얻는 전력 효율" data-en="Power efficiency from event-driven processing">Power efficiency from event-driven processing</p></div>
+      <div class="hl reveal"><h4 data-ko="고성능 학습" data-en="High-performance learning">High-performance learning</h4><p data-ko="기존 딥러닝과 동등한 정확도" data-en="Accuracy on par with conventional deep learning">Accuracy on par with conventional deep learning</p></div>
+      <div class="hl reveal"><h4 data-ko="생물학적 영감" data-en="Biological inspiration">Biological inspiration</h4><p data-ko="실제 뇌의 작동 원리에 기반한 설계" data-en="Design that follows how the brain actually works">Design that follows how the brain actually works</p></div>
+      <div class="hl reveal"><h4 data-ko="실시간 처리" data-en="Real-time processing">Real-time processing</h4><p data-ko="시간 정보를 활용한 빠른 추론" data-en="Fast inference that exploits timing">Fast inference that exploits timing</p></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Demo Section -->
-    <section id="demo" class="section demo">
-        <div class="container">
-            <h2 class="section-title" data-ko="Demo" data-en="Demo">Demo</h2>
-            <p class="section-subtitle" data-ko="MindCore 동작 데모 영상" data-en="MindCore Operation Demo Videos">MindCore 동작 데모 영상</p>
-            
-            <div class="demo-grid">
-                <div class="demo-card">
-                    <div class="demo-video">
-                        <video controls preload="metadata">
-                            <source src="resources/MindCore-MNIST.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="demo-info">
-                        <h3 data-ko="MNIST 손글씨 인식" data-en="MNIST Handwritten Digit Recognition">MNIST 손글씨 인식</h3>
-                        <p data-ko="MindCore가 MNIST 데이터셋의 손글씨 숫자를 실시간으로 인식하는 과정을 보여줍니다. Spiking Neural Network를 활용하여 낮은 전력으로 높은 정확도를 달성합니다." data-en="Demonstrates MindCore recognizing handwritten digits from the MNIST dataset in real-time. Achieves high accuracy with low power using Spiking Neural Networks.">MindCore가 MNIST 데이터셋의 손글씨 숫자를 실시간으로 인식하는 과정을 보여줍니다. Spiking Neural Network를 활용하여 낮은 전력으로 높은 정확도를 달성합니다.</p>
-                    </div>
-                </div>
-                
-                <div class="demo-card">
-                    <div class="demo-video">
-                        <video controls preload="metadata">
-                            <source src="resources/MindCore-NMNIST.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="demo-info">
-                        <h3 data-ko="N-MNIST 이벤트 기반 인식" data-en="N-MNIST Event-based Recognition">N-MNIST 이벤트 기반 인식</h3>
-                        <p data-ko="이벤트 카메라로 촬영된 N-MNIST 데이터를 처리하는 MindCore의 능력을 보여줍니다. Event-driven 방식으로 더욱 효율적인 추론이 가능합니다." data-en="Shows MindCore's capability to process N-MNIST data captured by event cameras. Event-driven approach enables more efficient inference.">이벤트 카메라로 촬영된 N-MNIST 데이터를 처리하는 MindCore의 능력을 보여줍니다. Event-driven 방식으로 더욱 효율적인 추론이 가능합니다.</p>
-                    </div>
-                </div>
-                
-                <div class="demo-card">
-                    <div class="demo-video">
-                        <video controls preload="metadata">
-                            <source src="resources/MindCore-ADFTD.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="demo-info">
-                        <h3 data-ko="ADFTD 시계열 데이터 분석" data-en="ADFTD Time-series Data Analysis">ADFTD 시계열 데이터 분석</h3>
-                        <p data-ko="시간 정보가 중요한 ADFTD 데이터셋에서 MindCore의 temporal coding 기술을 활용한 실시간 분석을 확인하실 수 있습니다." data-en="Demonstrates real-time analysis using MindCore's temporal coding technology on the ADFTD dataset where temporal information is crucial.">시간 정보가 중요한 ADFTD 데이터셋에서 MindCore의 temporal coding 기술을 활용한 실시간 분석을 확인하실 수 있습니다.</p>
-                    </div>
-                </div>
-                
-                <div class="demo-card">
-                    <div class="demo-video">
-                        <video controls preload="metadata">
-                            <source src="resources/MindCore_PTB_APAVA_UCIHAR.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="demo-info">
-                        <h3 data-ko="PTB, APAVA, UCIHAR 데이터셋 추론" data-en="PTB, APAVA, UCIHAR Dataset Inference">PTB, APAVA, UCIHAR 데이터셋 추론</h3>
-                        <p data-ko="MindCore가 다양한 시계열 데이터셋(PTB ECG 심전도, APAVA EEG 뇌파 데이터, UCIHAR 휴대용 기기를 통한 활동 인식)을 효율적으로 처리하는 과정을 보여줍니다. 의료, IoT, 웨어러블 분야에서의 실용적인 적용 가능성을 확인할 수 있습니다." data-en="Demonstrates MindCore efficiently processing various time-series datasets including PTB ECG, APAVA EEG, and UCIHAR activity recognition. Shows practical applicability in medical, IoT, and wearable domains.">MindCore가 다양한 시계열 데이터셋(PTB ECG 심전도, APAVA EEG 뇌파 데이터, UCIHAR 휴대용 기기를 통한 활동 인식)을 효율적으로 처리하는 과정을 보여줍니다. 의료, IoT, 웨어러블 분야에서의 실용적인 적용 가능성을 확인할 수 있습니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ══════════════ TEAM ══════════════ -->
+<section class="team" id="team">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-ko="팀" data-en="Team">Team</p>
+    <h2 class="display reveal" data-ko="MindCore를 만드는 팀" data-en="The people building it">The people building it</h2>
+    <p class="lede reveal" data-ko="신경과학과 반도체, 두 분야를 모두 경험한 엔지니어들이 MindCore를 만들고 있습니다." data-en="Engineers who have lived in both worlds: neuroscience and silicon.">Engineers who have lived in both worlds: neuroscience and silicon.</p>
 
-    <!-- Applications Section -->
-    <section id="applications" class="section applications">
-        <div class="container">
-            <h2 class="section-title" data-ko="Applications" data-en="Applications">Applications</h2>
-            <div class="app-grid">
-                <div class="app-card">
-                    <h3 data-ko="컴퓨터 비전" data-en="Computer Vision">컴퓨터 비전</h3>
-                    <p data-ko="이벤트 카메라 기반 실시간 객체 인식 및 추적" data-en="Real-time object recognition and tracking with event cameras">이벤트 카메라 기반 실시간 객체 인식 및 추적</p>
-                </div>
-                <div class="app-card">
-                    <h3 data-ko="의료 AI" data-en="Medical AI">의료 AI</h3>
-                    <p data-ko="저전력 웨어러블 의료 기기용 AI 진단 시스템" data-en="AI diagnostic systems for low-power wearable medical devices">저전력 웨어러블 의료 기기용 AI 진단 시스템</p>
-                </div>
-                <div class="app-card">
-                    <h3 data-ko="자율주행" data-en="Autonomous Driving">자율주행</h3>
-                    <p data-ko="실시간 환경 인식 및 의사결정 시스템" data-en="Real-time environment perception and decision-making system">실시간 환경 인식 및 의사결정 시스템</p>
-                </div>
-                <div class="app-card">
-                    <h3 data-ko="로보틱스" data-en="Robotics">로보틱스</h3>
-                    <p data-ko="생물학적 감각-운동 제어 시스템" data-en="Biological sensorimotor control system">생물학적 감각-운동 제어 시스템</p>
-                </div>
-                <div class="app-card">
-                    <h3 data-ko="IoT & 스마트 센서" data-en="IoT & Smart Sensors">IoT & 스마트 센서</h3>
-                    <p data-ko="초저전력 엣지 인텔리전스" data-en="Ultra-low power edge intelligence">초저전력 엣지 인텔리전스</p>
-                </div>
-                <div class="app-card">
-                    <h3 data-ko="뇌-컴퓨터 인터페이스" data-en="Brain-Computer Interface">뇌-컴퓨터 인터페이스</h3>
-                    <p data-ko="신경 신호 처리 및 해석" data-en="Neural signal processing and interpretation">신경 신호 처리 및 해석</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <article class="ceo reveal">
+      <div class="ceo__photo"><img src="images/ceo_yang.jpg" alt="Prof. Yoon-Seok Yang" loading="lazy" decoding="async"></div>
+      <div class="ceo__info">
+        <h3>Prof. Yoon-Seok Yang</h3>
+        <p class="ceo__role">Founder &amp; CEO</p>
+        <p class="ceo__aff">Assistant Professor, Department of Computer Science, SUNY Korea</p>
+        <p class="ceo__bio" data-ko="SUNY Korea 컴퓨터과학과 조교수. Google(서니베일)에서 TPU 실리콘·연구 엔지니어로 근무했으며, 그 이전에는 Intel Labs(산타클라라) 뉴로모픽 컴퓨팅 랩에서 2012년부터 2022년까지 연구 과학자로 뉴로모픽 시스템과 AI 칩 설계를 연구했습니다. 미국 Texas A&amp;M 대학교에서 전기컴퓨터공학 박사 학위를 취득했습니다." data-en="Assistant professor in Computer Science at SUNY Korea. Previously a Tensor Processing Unit (TPU) silicon and research engineer at Google in Sunnyvale, California. Before Google, he was a research scientist at the Neuromorphic Computing Lab at Intel Labs in Santa Clara from 2012 to 2022, working on neuromorphic computing systems and AI chip design. He earned his Ph.D. in electrical and computer engineering from Texas A&amp;M University.">Assistant professor in Computer Science at SUNY Korea. Previously a Tensor Processing Unit (TPU) silicon and research engineer at Google in Sunnyvale, California. Before Google, he was a research scientist at the Neuromorphic Computing Lab at Intel Labs in Santa Clara from 2012 to 2022, working on neuromorphic computing systems and AI chip design. He earned his Ph.D. in electrical and computer engineering from Texas A&amp;M University.</p>
+        <ul class="ceo__badges">
+          <li>Ex-Google TPU</li>
+          <li>Ex-Intel Neuromorphic Lab</li>
+          <li>Ph.D. ECE, Texas A&amp;M</li>
+        </ul>
+      </div>
+    </article>
 
-    <!-- Research Section -->
-    <section id="research" class="section research">
-        <div class="container">
-            <h2 class="section-title" data-ko="Research & Publications" data-en="Research & Publications">Research & Publications</h2>
-            <div class="research-content">
-                <div class="research-intro">
-                    <p data-ko="MindSyn의 핵심 기술은 최신 학술 연구를 기반으로 합니다. 우리는 지속적인 연구개발을 통해 뇌 기반 AI 기술의 최전선에서 혁신을 이껐어가고 있습니다." data-en="MindSyn's core technology is based on cutting-edge academic research. We are driving innovation at the forefront of brain-based AI technology through continuous R&D.">
-                        MindSyn의 핵심 기술은 최신 학술 연구를 기반으로 합니다. 
-                        우리는 지속적인 연구개발을 통해 뇌 기반 AI 기술의 
-                        최전선에서 혁신을 이끌어가고 있습니다.
-                    </p>
-                </div>
-                
-                <div class="publications-list">
-                    <!-- Paper 1 -->
-                    <div class="paper-card">
-                        <div class="paper-header">
-                            <h3>MindCore: Spike-Driven Programmable Accelerator for On-device Neuromorphic Computing</h3>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <p class="authors"><strong>Authors:</strong> Hawon Park, Si Yong Lee, Ryangjin Lee, Yoora Kim, Yoon-Seok Yang</p>
-                        <p class="venue"><strong>Published in:</strong> IEEE International Symposium on Embeddeded Multicore/Many-core Systems-on-Chip (MCSoC 2025)</p>
-                        <div class="paper-footer">
-                            <div class="paper-tags">
-                                <span class="tag">Spiking Neural Networks</span>
-                                <span class="tag">Deep Learning</span>
-                                <span class="tag">Neuromorphic Computing</span>
-                            </div>
-                            <button class="btn-bib" onclick="toggleBib('bib1')">📋 BibTeX</button>
-                        </div>
-                        <div id="bib1" class="bib-content" style="display: none;">
-                            <pre>null</pre>
-                        </div>
-                    </div>
+    <h3 class="team__sub reveal" data-ko="연구팀" data-en="Research Team">Research Team</h3>
+    <div class="team-grid">
+      <div class="member reveal"><span class="member__ini">SY</span><h4>Si Yong Lee</h4><p data-ko="수석 연구원" data-en="Principal Research Engineer">Principal Research Engineer</p></div>
+      <div class="member reveal"><span class="member__ini">HP</span><h4>Hawon Park</h4><p data-ko="선임 연구원" data-en="Senior Research Engineer">Senior Research Engineer</p></div>
+      <div class="member reveal"><span class="member__ini">RL</span><h4>Ryangjin Lee</h4><p data-ko="연구원" data-en="Research Engineer">Research Engineer</p></div>
+    </div>
+  </div>
+</section>
 
-                    <!-- Paper 2 - Example for future additions
-                    <div class="paper-card">
-                        <div class="paper-header">
-                            <h3>Energy-Efficient Neuromorphic Architecture for Edge AI</h3>
-                            <span class="year-badge">2023</span>
-                        </div>
-                        <p class="authors"><strong>Authors:</strong> Yoon-Seok Yang, et al.</p>
-                        <p class="venue"><strong>Published in:</strong> IEEE Transactions on Neural Networks and Learning Systems</p>
-                        <p class="description">
-                            Edge 환경에서의 초저전력 AI 추론을 위한 신경모방 아키텍처 설계 및 
-                            하드웨어 구현 방법론을 제시합니다.
-                        </p>
-                        <div class="paper-footer">
-                            <div class="paper-tags">
-                                <span class="tag">Neuromorphic Hardware</span>
-                                <span class="tag">Edge AI</span>
-                                <span class="tag">Energy Efficiency</span>
-                            </div>
-                            <button class="btn-bib" onclick="toggleBib('bib2')">📋 BibTeX</button>
-                        </div>
-                        <div id="bib2" class="bib-content" style="display: none;">
-                            <pre>@article{yang2023energy,
-  title={Energy-Efficient Neuromorphic Architecture for Edge AI},
-  author={Yang, Yoon-Seok and others},
-  journal={IEEE Transactions on Neural Networks and Learning Systems},
-  year={2023},
-  publisher={IEEE}
-}</pre> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="research-highlights">
-                    <h3 data-ko="🔬 연구 하이라이트" data-en="🔬 Research Highlights">🔬 연구 하이라이트</h3>
-                    <div class="highlight-grid">
-                        <div class="highlight-item">
-                            <div class="highlight-icon">⚡</div>
-                            <h4 data-ko="초저전력 AI" data-en="Ultra-low Power AI">초저전력 AI</h4>
-                            <p data-ko="Event-driven 처리를 통한 획기적인 전력 효율성" data-en="Breakthrough power efficiency through event-driven processing">Event-driven 처리를 통한 획기적인 전력 효율성</p>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">🎯</div>
-                            <h4 data-ko="고성능 학습" data-en="High-Performance Learning">고성능 학습</h4>
-                            <p data-ko="기존 딥러닝과 동등한 정확도 달성" data-en="Achieving accuracy equivalent to traditional deep learning">기존 딥러닝과 동등한 정확도 달성</p>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">🧬</div>
-                            <h4 data-ko="생물학적 영감" data-en="Biological Inspiration">생물학적 영감</h4>
-                            <p data-ko="실제 뇌의 작동 원리를 모방한 설계" data-en="Design mimicking real brain operating principles">실제 뇌의 작동 원리를 모방한 설계</p>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">🚀</div>
-                            <h4 data-ko="실시간 처리" data-en="Real-time Processing">실시간 처리</h4>
-                            <p data-ko="시간 정보를 활용한 빠른 추론" data-en="Fast inference utilizing temporal information">시간 정보를 활용한 빠른 추론</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="contact" id="contact">
+  <canvas class="contact__canvas" id="contactField" aria-hidden="true"></canvas>
+  <div class="wrap contact__inner">
+    <p class="eyebrow reveal" data-ko="문의" data-en="Contact">Contact</p>
+    <h2 class="contact__title reveal" data-ko="함께 만들어봅시다" data-en="Let's build it together">Let's build it together</h2>
+    <p class="lede reveal" data-ko="기술 협력, 파일럿 도입, 투자 문의 모두 환영합니다." data-en="Technical collaboration, pilot deployments and investment enquiries are all welcome.">Technical collaboration, pilot deployments and investment enquiries are all welcome.</p>
+    <a class="mailto reveal magnetic" href="mailto:yoonseok.yang@sunykorea.ac.kr">
+      <span>yoonseok.yang@sunykorea.ac.kr</span>
+      <span class="mailto__arrow" aria-hidden="true">→</span>
+    </a>
+    <p class="contact__addr reveal" data-ko="인천, 대한민국" data-en="Incheon, South Korea">Incheon, South Korea</p>
+  </div>
+</section>
+</main>
 
-    <!-- Team Section -->
-    <section id="team" class="section team">
-        <div class="container">
-            <h2 class="section-title" data-ko="Our Team" data-en="Our Team">Our Team</h2>
-            <div class="team-content">
-                <p class="team-intro" data-ko="MindSyn은 신경과학, 인공지능, 컴퓨터 공학 분야의 세계적 전문가들로 구성된 팀입니다." data-en="MindSyn is a team of world-class experts in neuroscience, artificial intelligence, and computer engineering.">
-                    MindSyn은 신경과학, 인공지능, 컴퓨터 공학 분야의 
-                    세계적 전문가들로 구성된 팀입니다.
-                </p>
-                
-                <!-- CEO Section -->
-                <div class="ceo-section">
-                    <div class="ceo-card">
-                        <div class="ceo-photo">
-                            <img src="images/ceo_yang.jpg" alt="Prof. Yoon-Seok Yang">
-                        </div>
-                        <div class="ceo-info">
-                            <h3>Prof. Yoon-Seok Yang</h3>
-                            <p class="role">Founder & CEO</p>
-                            <p class="affiliation">Assistant Professor, Department of Computer Science, SUNY Korea</p>
-                            <div class="ceo-bio">
-                                <p>
-                                    Prof. Yoon-Seok Yang is an assistant professor in the Department of Computer Science at SUNY Korea. 
-                                    Previously, he worked as a Tensor Processing Unit (TPU) silicon and research engineer at Google in Sunnyvale, California. 
-                                </p>
-                                <p>
-                                    Before joining Google, he was a research scientist at the Neuromorphic Computing Lab at Intel Labs in Santa Clara, California, 
-                                    from 2012 to 2022, focusing on neuromorphic computing systems and AI chip design. 
-                                </p>
-                                <p>
-                                    Prof. Yang earned his Ph.D. in electrical and computer engineering from Texas A&M University, College Station, USA.
-                                </p>
-                            </div>
-                            <div class="ceo-highlights">
-                                <div class="highlight-item-ceo">
-                                    <span class="highlight-icon-ceo">🏢</span>
-                                    <span>Ex-Google TPU Engineer</span>
-                                </div>
-                                <div class="highlight-item-ceo">
-                                    <span class="highlight-icon-ceo">🧠</span>
-                                    <span>Ex-Intel Neuromorphic Researcher</span>
-                                </div>
-                                <div class="highlight-item-ceo">
-                                    <span class="highlight-icon-ceo">🎓</span>
-                                    <span>Ph.D. in ECE, Texas A&M</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <img src="images/mark.svg" alt="" width="40" height="30">
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div>
+        <h4>Company</h4>
+        <a href="#mindcore">MindCore</a>
+        <a href="#team" data-ko="팀" data-en="Team">Team</a>
+        <a href="#research" data-ko="연구" data-en="Research">Research</a>
+      </div>
+      <div>
+        <h4>Technology</h4>
+        <a href="#shift" data-ko="작동 원리" data-en="How it works">How it works</a>
+        <a href="#tech" data-ko="기술" data-en="Technology">Technology</a>
+        <a href="#applications" data-ko="응용 분야" data-en="Applications">Applications</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:yoonseok.yang@sunykorea.ac.kr">Email</a>
+        <a href="resources/MindSyn_Paper.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer__bottom">
+    <p>&copy; <span id="year">2026</span> MindSyn. All rights reserved.</p>
+    <p>Incheon, South Korea</p>
+  </div>
+</footer>
 
-                <!-- Other Team Members -->
-                <h3 class="team-subtitle" data-ko="Research Team" data-en="Research Team">Research Team</h3>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-photo">
-                            <div class="photo-placeholder">SY</div>
-                        </div>
-                        <h3>Si Yong Lee</h3>
-                        <p class="role">Principal Research Engineer</p>
-                        <p class="bio">
-                            
-                        </p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo">
-                            <div class="photo-placeholder">HP</div>
-                        </div>
-                        <h3>Hawon Park</h3>
-                        <p class="role">Senior Research Engineer</p>
-                        <p class="bio">
-                            
-                        </p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo">
-                            <div class="photo-placeholder">RL</div>
-                        </div>
-                        <h3>Ryangjin Lee</h3>
-                        <p class="role">Research Engineer</p>
-                        <p class="bio">
-                            
-                        </p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo">
-                            <div class="photo-placeholder">YK</div>
-                        </div>
-                        <h3>Yoora Kim</h3>
-                        <p class="role">Research Engineer</p>
-                        <p class="bio">
-                            
-                        </p>
-                    </div>
-                    <!-- Add more team members as needed -->
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ══════════════ VIDEO LIGHTBOX ══════════════ -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close">✕</button>
+  <div class="lightbox__stage" role="dialog" aria-modal="true" aria-label="Demo video">
+    <video id="lightboxVideo" controls playsinline preload="none"></video>
+    <p class="lightbox__cap" id="lightboxCap"></p>
+  </div>
+</div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title" data-ko="Contact Us" data-en="Contact Us">Contact Us</h2>
-            <div class="contact-content-center">
-                <div class="contact-info-center">
-                    <h3 data-ko="Get in Touch" data-en="Get in Touch">Get in Touch</h3>
-                    <p data-ko="MindSyn의 기술에 관심이 있으시거나 협업을 원하시면 언제든 연락주세요." data-en="If you are interested in MindSyn's technology or would like to collaborate, please feel free to contact us anytime.">
-                        MindSyn의 기술에 관심이 있으시거나 
-                        협업을 원하시면 언제든 연락주세요.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <strong>Email:</strong>
-                            <a href="mailto:yoonseok.yang@sunykorea.ac.kr">yoonseok.yang@sunykorea.ac.kr</a>
-                        </div>
-                        <div class="contact-item">
-                            <strong>Address:</strong>
-                            <p>Incheon, South Korea</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/MINDSYN_logo_white.png" alt="MindSyn">
-                    <!-- <p>BRAIN IN</p> -->
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#team">Team</a></li>
-                            <li><a href="#research">Research</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Technology</h4>
-                        <ul>
-                            <li><a href="#technology">Our Tech</a></li>
-                            <li><a href="#applications">Applications</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Contact</h4>
-                        <ul>
-                            <li><a href="mailto:contact@mindsyn.ai">Email</a></li>
-                            <li><a href="#contact">Get in Touch</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MindSyn. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="assets/js/visuals.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
